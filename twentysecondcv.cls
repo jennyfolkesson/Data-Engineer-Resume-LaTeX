@@ -12,6 +12,7 @@
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
 
 \usepackage{pstricks}
+\usepackage{moresize}
 
 \usepackage{fontawesome}
 \RequirePackage{tikz}
@@ -109,16 +110,11 @@
 %----------------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
-% \renewcommand{\bfseries}{\color{black}} % Make \textbf produce coloured text instead
-
-\pagestyle{empty} % Disable headers and footers
-
-\setlength{\parindent}{0pt} % Disable paragraph indentation
-
-% --------------------------------------------------------------------------------------
-% 	FONTS
-%-------------------------------------------------------------------------------------
+% Disable headers and footers
+\pagestyle{empty} 
+% Disable paragraph indentation
+\setlength{\parindent}{0pt}
+% Font
 \newfontfamily\headingfont[Path = fonts/]{segoeuib.ttf}
 
 %----------------------------------------------------------------------------------------
@@ -135,7 +131,8 @@
 
 \newcommand{\profilesection}[2]{\vspace{8pt}{\color{black!80} \huge #1 \rule[0.15\baselineskip]{#2}{1pt}}}
 
-% Define custom commands for CV info
+% Define custom commands for resume contact information
+% Icon followed by 
 \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
@@ -146,6 +143,7 @@
 \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
+\newcommand{\cvlastname}[1]{\renewcommand{\cvlastname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 
 % Command for printing the contact information icons
@@ -155,17 +153,18 @@
 \newcommand\programming[1]{ 
 	\renewcommand{\programming}{
 		\begin{tikzpicture}
-        	\node [above right] at (0, 4) {$0 \: LOC \: \arrow{3.2} \: 5000 \: LOC$};
-			\foreach [count=\i] \x/\y in {#1}{
-				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
-				\node [above right] at (0,\i+0.35) {\x};
-			}
+		\node [above right] at (0, 4)
+		{$No \: knowledge \: \arrow{2.0} \: Excellent$};
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
+			\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
+			\node [above right] at (0,\i+0.35) {\x};
+		}
 		\end{tikzpicture}
 	}
 }
-\newcommand\projects[1]{ 
-	\renewcommand{\projects}{
+\newcommand\languages[1]{ 
+	\renewcommand{\languages}{
 		{#1}
 	}
 }
@@ -175,91 +174,85 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\makeprofile}{
-  \begin{tikzpicture}[remember picture,overlay]
-      \node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
-  \end{tikzpicture}
+  	\begin{tikzpicture}[remember picture,overlay]
+      \node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, 			 minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+ 	 \end{tikzpicture}
 
-  %------------------------------------------------
+  	%------------------------------------------------
 
-  \begin{textblock}{6}(0.5, 0.2)
+  	\begin{textblock}{6}(0.5, 0.2)
 
     %------------------------------------------------
     
-        \vspace{4mm}
-    {\Huge\color{pblue}\cvname}
+    \vspace{4mm}
+    {\HUGE\color{pblue}\textbf{\cvname}}
+
+    {\HUGE\color{black!80}\textbf{\cvlastname}}
     
     \vspace{2mm}
-
-    %------------------------------------------------
-    
-    {\Large\color{black!80}\cvjobtitle}
+    {\LARGE\color{black!80}\cvjobtitle}
 
     %------------------------------------------------
     
     \vspace{4mm}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{5cm}}
-      \ifthenelse{\equal{\cvnumberphone}{}}{}{
-      		{$
-              \begin{array}{l}
-              \hspace{4mm} \Huge \textnormal{\faMobile} 
-              \end{array}
-              $} 
-            & \cvnumberphone\\}
+    \ifthenelse{\equal{\cvnumberphone}{}}{}{
+    {$
+     \begin{array}{l}
+     \hspace{4mm} \Huge \textnormal{\faMobile} 
+     \end{array}
+     $} 
+     & \cvnumberphone\\}
             
-      \ifthenelse{\equal{\cvsite}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.8mm} \huge \textnormal{\textcolor{test}{\faGlobe}}
-              \end{array}
-              $} 
-            & \href{http://\cvsite}{\cvsite} \\}
-      \ifthenelse{\equal{\cvmail}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.5mm} \huge \textnormal{\textcolor{yt}{\faEnvelopeO}}
-              \end{array}
-              $} 
-            & \href{mailto:\cvmail}{\cvmail} \\}
-      
-       \ifthenelse{\equal{\cvlinkedin}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{3mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
-              \end{array}
-              $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
+	\ifthenelse{\equal{\cvmail}{}}{}{
+    {$
+     \begin{array}{l}
+     \hspace{2.5mm} \huge \textnormal{\textcolor{black}{\faEnvelopeO}}
+     \end{array}
+     $} 
+     & \href{mailto:\cvmail}{\cvmail} \\}
+            
+	\ifthenelse{\equal{\cvsite}{}}{}{
+     {$
+      \begin{array}{l}
+      \hspace{2.8mm} \huge \textnormal{\textcolor{test}{\faGlobe}}
+      \end{array}
+      $} 
+      & \href{http://\cvsite}{\cvsite} \\}
+
+	\ifthenelse{\equal{\cvlinkedin}{}}{}{
+     {$
+      \begin{array}{l}
+      \hspace{3mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
+      \end{array}
+      $}
+      & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
             }  
-        \ifthenelse{\equal{\cvgithub}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{3mm} \huge \textnormal{\faGithub}
-              \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-            }   
+	\ifthenelse{\equal{\cvgithub}{}}{}{
+     {$
+      \begin{array}{l}
+      \hspace{3mm} \huge \textnormal{\faGithub}
+      \end{array}
+      $}
+      & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+      }   
             
     \end{tabular}
 
     %------------------------------------------------
-    \vspace{4mm}
+
     \profilesection{Skills}{4cm}
-    
-    {\large \textbf{Overview}}
-
 	\skills
-        
-        %------------------------------------------------
-        
-        \vspace{3mm}
-       
-	 {\large \textbf{Programming}} 
-
-		 \programming
          
-        \vspace{4mm}
-        \profilesection{Projects}{3cm} 
+    \vspace{4mm}
+    \profilesection{Programming}{15mm}
+	\programming
+         
+    \vspace{4mm}
+    \profilesection{Languages}{23mm}   
+    \languages
         
-        \projects
-      
   \end{textblock}
 }
 
