@@ -10,7 +10,7 @@ He in turn compiled it with elements from several other templates, including:
 
  **Important**: Make sure to compile with XeLaTeX, not PDFLaTeX.
 
-![CV Screenshot](resume.png)
+
 
 
 
