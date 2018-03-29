@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.11)  29 MAR 2018 15:21
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.3.11)  29 MAR 2018 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -637,7 +637,7 @@ Package: fontawesome 2015/07/30 v4.4.0 font awesome icons
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome/fontawesomesymbols-generic
 .tex)
 Requested font "FontAwesome" at 10.0pt
- -> ^^ ^^\:^^B
+ -> 0m;^^C
 Requested font "FontAwesome/OT" at 10.0pt
  -> 
 \g__fontspec_family_FontAwesome_int=\count153
@@ -1509,8 +1509,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--70
 
 Requested font "[fonts/segoeuib]/OT:script=latn;language=DFLT;" at 17.28pt
  -> ./fonts/segoeuib.ttf
-Missing character: There is no ​ in font [ClearSans-Regular.ttf]/OT:script=latn
-;language=DFLT;mapping=tex-text;mapping=tex-text;!
 
 Underfull \hbox (badness 10000) in paragraph at lines 80--130
 
